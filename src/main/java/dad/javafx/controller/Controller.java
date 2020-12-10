@@ -98,8 +98,8 @@ public class Controller implements Initializable{
     	ButtonType button_aceptar = new ButtonType("Aceptar");
     	Stage stage;
     	
-		if(modelo.getEmailDestinatario().matches("") || modelo.getEmailRemitente().matches("") | modelo.getIpServidor().matches("") | modelo.getPassword().matches("")
-				| modelo.getPuerto().matches("") | modelo.getAsuntoMensaje().matches("")) {
+		if(modelo.getEmailDestinatario().matches("") || modelo.getEmailRemitente().matches("") || modelo.getIpServidor().matches("") || modelo.getPassword().matches("")
+				|| modelo.getPuerto().matches("") || modelo.getAsuntoMensaje().matches("")) {
 			
 			alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Faltan datos");
