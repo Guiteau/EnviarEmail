@@ -57,7 +57,7 @@ public class Controller implements Initializable{
     @FXML
     private PasswordField passwordField;
 
-	@FXML
+    @FXML
     private TextField textField_email_destinatario;
 
     @FXML
@@ -98,7 +98,7 @@ public class Controller implements Initializable{
     	ButtonType button_aceptar = new ButtonType("Aceptar");
     	Stage stage;
     	
-		if(modelo.getEmailDestinatario().matches("") | modelo.getEmailRemitente().matches("") | modelo.getIpServidor().matches("") | modelo.getPassword().matches("")
+		if(modelo.getEmailDestinatario().matches("") || modelo.getEmailRemitente().matches("") | modelo.getIpServidor().matches("") | modelo.getPassword().matches("")
 				| modelo.getPuerto().matches("") | modelo.getAsuntoMensaje().matches("")) {
 			
 			alert = new Alert(AlertType.INFORMATION);
@@ -113,10 +113,10 @@ public class Controller implements Initializable{
 			
 		}else {
 			
-		
+			modelo.setEmail(new SimpleEmail());
 			modelo.getEmail().setHostName(modelo.getIpServidor());
 			modelo.getEmail().setSmtpPort(Integer.parseInt(modelo.getPuerto()));
-			modelo.getEmail().setAuthenticator(new DefaultAuthenticator("", modelo.getPassword()));		
+			modelo.getEmail().setAuthenticator(new DefaultAuthenticator(modelo.getEmailRemitente(), modelo.getPassword()));		
 			modelo.getEmail().setSSLOnConnect(modelo.isConexionSSL());
 			modelo.getEmail().setSubject(modelo.getAsuntoMensaje());
 			
